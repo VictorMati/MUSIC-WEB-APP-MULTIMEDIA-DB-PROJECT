@@ -1,0 +1,72 @@
+@import url("/public/css/root.css");
+/* Registration Page styles */
+.registration {
+    background-color: var(--bg-light);
+    color: var(--bg-dark);
+    border: 1px solid var(--accent-color);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 500px;
+    height: 550px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.registration h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.registration form {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+}
+
+.registration label {
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.registration input[type="text"],
+.registration input[type="email"],
+.registration input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.registration .error {
+    color: #ff0000;
+    font-size: 1rem;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.registration button[type="submit"] {
+    background-color: var(--primary-color);
+    color: var(--bg-light);
+    width: 70%;
+    border: none;
+    font-size: 1.2rem;
+    margin-top: 30px;
+    border-radius: 5px;
+    padding: 10px 20px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.registration button[type="submit"]:hover {
+    background-color: var(--secondary-color);
+}

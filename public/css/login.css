@@ -1,0 +1,86 @@
+/* Primary colors */
+:root {
+    /* Light Mode Colors */
+    --primary-background-light: #fff;
+    --secondary-background-light: #fbfbfb;
+    --primary-text-light: #222;
+    --secondary-text-light: #333;
+    --button-gradient-light-start: #e2005e;
+    --button-gradient-light-end: #0065e1;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Login Page styles */
+.login {
+    background-color: var(--secondary-background-light);
+    color: var(--bg-dark);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 450px;
+    height: 500px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.login h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.login form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px;
+}
+
+.login label {
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.login input[type="email"],
+.login input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 30px;
+    border: 1px solid var(--secondary-text-light);
+    border-radius: 5px;
+}
+
+.login .error {
+    color: #ff0000;
+    font-size: 1rem;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.login button {
+    background-color: var(--button-gradient-light-end);
+    width: 100%;
+    color: var(--primary-background-light);
+    font-size: 1.2rem;
+    border: none;
+    margin-top: 10px;
+    border-radius: 5px;
+    padding: 10px 20px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login button:hover {
+    box-shadow: 0 0 5px var(--secondary-text-light);
+    transition: .2s;
+}

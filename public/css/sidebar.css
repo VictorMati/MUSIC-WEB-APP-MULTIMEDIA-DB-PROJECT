@@ -1,0 +1,83 @@
+/* styles.css */
+@import url("/public/css/root.css");
+
+/* Sidebar Styles */
+.sidebar {
+    width: 250px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    transition: width 0.3s ease-in-out;
+}
+
+/* User Profile Styles */
+.user-profile {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.user-profile img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.user-profile p {
+    margin: 0;
+    font-size: 18px;
+}
+
+/* Navigation Styles */
+.sidebar-navigation ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar-navigation li {
+    margin: 30px 25px;
+}
+
+.sidebar-navigation a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    transition: color 0.3s ease-in-out;
+}
+
+.sidebar-navigation a:hover {
+    color: var(--button-gradient-light-end);
+}
+
+.sidebar-navigation i {
+    margin-right: 15px;
+    font-size: 20px;
+}
+
+/* Logout Styles */
+.logout {
+    margin: 100px 30px;
+    margin-bottom: 10px;
+}
+
+.logout a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    transition: color 0.3s ease-in-out;
+}
+
+.logout a:hover {
+    color: var(--button-gradient-light-start);
+}
+
+.logout i {
+    margin-right: 15px;
+    font-size: 20px;
+}
