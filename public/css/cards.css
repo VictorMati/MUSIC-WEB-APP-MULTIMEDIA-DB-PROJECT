@@ -1,0 +1,46 @@
+
+:root {
+    /* Light Mode Colors */
+    --primary-background-light: #fff;
+    --secondary-background-light: #fbfbfb;
+    --tertiary-background-light: #efefef;
+    --primary-text-light: #222;
+    --secondary-text-light: #333;
+    --button-gradient-light-start: #e2005e;
+    --button-gradient-light-end: #0065e1;
+}
+
+.card {
+    flex: 0 0 calc(20% - 30px); /* Adjusted width for 5 columns with gap */
+    min-width: 200px;
+    /* background-color: var(--secondary-background-light); */
+    border-radius: 8px;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+    
+}
+
+.card:hover {
+    box-shadow: 0 0 5px var(--primary-background-light);
+    transform: translateY(-10px);
+    transition: all .2s ease-out;
+}
+
+h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: var(--primary-text-light);
+}
+
+img {
+    max-width: 100%;
+    width: 100%;
+    height: 180px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+p {
+    margin: 0;
+    padding-bottom: 8px;
+    color: var(--secondary-text-light);
+}

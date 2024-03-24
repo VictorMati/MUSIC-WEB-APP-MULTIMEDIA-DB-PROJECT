@@ -1,6 +1,4 @@
 
-<link rel="stylesheet" href="/public/css/sidebar.css">
-
 <aside class="sidebar">
     
         <div class="user-profile">
@@ -20,11 +18,11 @@
         </nav>
         <?php if (isset($_SESSION['user_id'])) : ?>
         <div class="logout">
-            <a href="/app/pages/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            <a href="?page=logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
         </div>
     <?php else : ?>
         <div class="logout">
-            <a href="/app/pages/login.php"><i class="fas fa-sign-in-alt"></i> Login</a>
+            <a href="?page=login"><i class="fas fa-sign-in-alt"></i> Login</a>
         </div>
     <?php endif; ?>
 </aside>

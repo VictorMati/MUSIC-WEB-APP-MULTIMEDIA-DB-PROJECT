@@ -8,7 +8,7 @@
 </head>
 <body>
 <?php 
-    echo "<h1> Error 404 </h1>";
+    echo "<h1> Page Not Found </h1>";
 ?>
 <style>
     h1 {

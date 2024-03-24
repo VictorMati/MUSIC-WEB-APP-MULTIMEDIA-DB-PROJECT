@@ -1,0 +1,56 @@
+
+:root {
+    /* Light Mode Colors */
+    --primary-background-light: #fff;
+    --secondary-background-light: #fbfbfb;
+    --tertiary-background-light: #efefef;
+    --primary-text-light: #222;
+    --secondary-text-light: #333;
+    --button-gradient-light-start: #e2005e;
+    --button-gradient-light-end: #0065e1;
+}
+
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h2 {
+    color: #222;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #0066ff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #0055e6;
+}
+
+.search-results {
+    margin-top: 20px;
+}
+
+.search-results h3 {
+    color: var(--primary-text-light);
+}
+
+

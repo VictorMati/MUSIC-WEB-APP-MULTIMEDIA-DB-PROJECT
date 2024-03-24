@@ -1,5 +1,5 @@
 <?php 
-require_once 'functions.php';
+require_once 'h_functions.php';
 require_once 'database.php';
 
 // Initialize variables to hold error messages
@@ -12,18 +12,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = test_input($_POST["email"]);
     $password = test_input($_POST["password"]);
 
+        // Validate username
+        if (empty($name)) {
+            $nameErr = "Name is required";
+        }
+    
+        // Validate email
+        if (empty($email)) {
+            $emailErr = "Email is required";
+        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $emailErr = "Invalid email format";
+        }
+    
+        // Validate password
+        if (empty($password)) {
+            $passwordErr = "Password is required";
+        }
+
     // Call the register function
     $db = new Database();
     $conn = $db->connect();
     if (register($conn, $name, $email, $password)) {
         $registrationSuccess = "Signup successful. You are now logged in.";
-        // Start a session upon successful registration
-        session_start();
-        $_SESSION["user_name"] = $name;
-        $_SESSION["user_email"] = $email;
-        // Redirect to home page or any other desired page
-        header("Location: index.php");
-        exit();
+        // Call the login function
+        if (login($conn, $email, $password)) {
+            header("Location: ?page=home");
+            exit();
+        } else {
+            $loginErr = "Invalid email or password";
+        }
     } else {
         $registrationSuccess = "";
     }
@@ -54,4 +71,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo '<div class="success-message">' . $registrationSuccess . '</div>';
     }
     ?>
+    <p>Already have an account? <a href="?page=register">Sign in here</a>.</p>
 </section>

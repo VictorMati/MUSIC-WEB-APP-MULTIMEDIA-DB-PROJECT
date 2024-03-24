@@ -21,6 +21,17 @@ header {
     padding: 10px;
 }
 
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.sidebar-toggle {
+    font-size: 20px;
+}
+
 .logo a {
     background: linear-gradient(to right, #6ed6ff, #1e56ff, #ff3d9e);
     -webkit-background-clip: text;
@@ -62,7 +73,8 @@ input[type="text"] {
     background-color: #002ca5; 
 }
 
-button {
+a {
+    text-align: none;
     background-color: var(--background-light);
     color: var(--text-light);
     border: none;
@@ -110,7 +122,35 @@ button {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    border: 2px solid #fff;
     margin-right: 20px;
 }
 
+#login-button {
+    margin-right: 30px;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#login-button i {
+    color: var(--primary-text-light);
+    border-radius: 5px;
+    padding: 8px;
+    border: none;
+    font-size: 20px;
+}
+
+.footer {
+    background-color: var(--secondary-text-light);
+    color: var(--secondary-background-light);
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer p {
+    margin: 0;
+    color: var(--secondary-background-light);
+}

@@ -1,5 +1,5 @@
 <?php 
-require_once 'functions.php';
+require_once 'h_functions.php';
 require_once 'database.php';
 
 // Initialize variables to hold error messages
@@ -11,12 +11,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = test_input($_POST["email"]);
     $password = test_input($_POST["password"]);
 
+        // Validate email
+        if (empty($email)) {
+            $emailErr = "Email is required";
+        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $emailErr = "Invalid email format";
+        }
+
+        // Validate password
+        if (empty($password)) {
+            $passwordErr = "Password is required";
+        }
+
     // Call the login function
     $db = new Database();
     $conn = $db->connect();
     if (login($conn, $email, $password)) {
-        // Redirect to home page upon successful login
-        header("Location: index");
+
+        header("Location: ?page=home");
         exit();
     } else {
         $loginErr = "Invalid email or password";
@@ -42,5 +54,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <span class="error"><?php echo $loginErr; ?></span>
 
     <!-- Add "Already have an account?" link -->
-    <p>Already have an account? <a href="/app/pages/register.php">Sign up here</a>.</p>
+    <p>don't have an account? <a href="?page=register">Sign up here</a>.</p>
 </section>

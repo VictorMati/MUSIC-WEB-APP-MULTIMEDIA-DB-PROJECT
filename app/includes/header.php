@@ -1,14 +1,35 @@
 <!-- header.php -->
+<?php
+require_once("C:\Users\hp\Documents\DataBase\MULTIMEDIA-DB-PROJECT\app\pages\h_functions.php");
+require_once("C:\Users\hp\Documents\DataBase\MULTIMEDIA-DB-PROJECT\app\pages\database.php");
 
-<link rel="stylesheet" href="/public/css/header.css">
+$db = new Database();
+$conn = $db->connect();
+
+// Check if the search form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["search_term"])) {
+    $searchTerm = test_input($_POST["search_term"]);
+    $searchResults = searchSongs($conn, $searchTerm);
+} else {
+    // Default search results
+    $searchResults = [];
+}
+
+?>
 
 <header>
-    <div class="logo">
-        <a href="?page=home">HarmonyVibe</a>
+    <div class="logo-container">
+        <div class="sidebar-toggle" id="sidebarToggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="logo">
+            <a href="?page=home">HarmonyVibe</a>
+        </div>
     </div>
 
+
     <div class="search-bar">
-        <form action="?page=search" method="GET">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
             <input type="text" id="search-input" name="search_term" placeholder="Search for songs" autocomplete="off">
             <button type="submit"><i class="fas fa-search"></i></button>
         </form>
@@ -22,12 +43,10 @@
                 <img src="<?php echo $_SESSION['avatar'] ?? 'assets\images\default_images\no music.jpg'; ?>" alt="Profile Image">
             </a>
         <?php else : ?>
-            <button id="login-button" onclick="">
+            <a href="?page=login" class="login-button">
                 <i class="fas fa-sign-in-alt"></i> Login
-            </button>
+            </a>
         <?php endif; ?>
     </div>
 
 </header>
-
-<script src="/public/js/search.js"></script>

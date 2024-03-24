@@ -1,13 +1,16 @@
 /* style.css */
+
 :root {
     /* Light Mode Colors */
     --primary-background-light: #fff;
     --secondary-background-light: #fbfbfb;
+    --tertiary-background-light: #efefef;
     --primary-text-light: #222;
     --secondary-text-light: #333;
     --button-gradient-light-start: #e2005e;
     --button-gradient-light-end: #0065e1;
 }
+
 
 body {
     font-family: 'Arial', sans-serif;
@@ -33,22 +36,27 @@ main {
     display: flex;
 }
 
-.sidebar-container {
-    width: 20%;
-}
 .main-container {
     width: 80%;
 }
 
-.sidebar {
+.sidebar-container {
+    width: 20%;
     background-color: var(--primary-background-light);
     color: var(--secondary-text-light);
+    position: relative;
+    top: 0;
+    left: -280px; /* Hide sidebar initially */
+    transition: left 0.3s ease;
+}
+
+.sidebar.active {
+    left: 0; 
+}
+
+.sidebar.active .main-container {
     width: 100%;
 }
 
-.main-content {
-    background-color: #1a1a1a;
-    color: #ffffff;
-}
 
 

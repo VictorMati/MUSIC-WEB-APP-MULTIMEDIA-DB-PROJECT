@@ -1,6 +1,8 @@
 <?php 
-require_once 'functions.php';
+require_once 'h_functions.php';
 require_once 'database.php';
+
+// session_start();
 
 $db = new Database();
 $conn = $db->connect();
@@ -14,15 +16,17 @@ $videos = fetchVideos($conn);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Videos View</title>
-    <link rel="stylesheet" href="/public/css/videos.css"> <!-- Adjust the path as needed -->
-</head>
+    <link rel="stylesheet" href="/public/css/videos.css"> 
+    <link rel="stylesheet" href="/public/css/cards.css"> 
 <body>
     <div class="container">
-        <h2>Videos</h2>
+        <h2>Video Songs</h2>
         <div class="video-list">
             <?php foreach ($videos as $video): ?>
-                <a href="player.php?video_id=<?php echo $video['video_id']; ?>" class="video-item-link">
+                <a href="/app/pages/audio_player.php/<?php echo $video['video_id']; ?>" class="video-item-link">
+                <div class="card">
                     <?php renderVideoCard($video); ?>
+                </div>    
                 </a>
             <?php endforeach; ?>
         </div>
