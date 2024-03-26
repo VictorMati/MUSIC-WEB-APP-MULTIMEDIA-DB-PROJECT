@@ -62,5 +62,11 @@ main {
     width: 100%;
 } */
 
+span {
+    background-color: #02c68e;
+    color: var(--primary-background-light);
+    display: flex;
+    justify-content: center;
+}
 
 

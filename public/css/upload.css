@@ -1,59 +1,88 @@
+/* upload.css */
+
+/* Light Mode Colors */
 :root {
-    /* Light Mode Colors */
-    --primary-background-light: #fff;
-    --secondary-background-light: #fbfbfb;
-    --tertiary-background-light: #efefef;
-    --primary-text-light: #222;
-    --secondary-text-light: #333;
-    --button-gradient-light-start: #e2005e;
-    --button-gradient-light-end: #0065e1;
+    --primary-background: #fff;
+    --secondary-background: #fbfbfb;
+    --tertiary-background: #efefef;
+    --primary-text: #222;
+    --secondary-text: #333;
+    --button-gradient-start: #e2005e;
+    --button-gradient-end: #0065e1;
 }
 
-/* Upload Form Styles */
+body {
+    background-color: var(--primary-background);
+    color: var(--primary-text);
+    font-family: Arial, sans-serif;
+}
+
 .upload-container {
-    width: 80%;
+    width: 100%;
+    max-width: 500px;
     margin: 0 auto;
+    padding: 20px;
 }
 
 .upload-form {
-    background-color: var(--secondary-background-light);
+    background-color: var(--secondary-background);
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .upload-form h2 {
-    color: var(--primary-text-light);
     margin-bottom: 20px;
+    color: var(--button-gradient-start); /* Adjust text color for better visibility */
 }
 
 .upload-form input[type="text"],
-.upload-form select {
+.upload-form input[type="file"],
+.upload-form button {
     width: 100%;
-    padding: 10px;
     margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid var(--tertiary-background);
+    border-radius: 4px;
+    background-color: var(--secondary-background);
+    color: var(--primary-text);
+    transition: border-color 0.3s ease;
+}
+
+.upload-form textarea {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid var(--tertiary-background);
+    border-radius: 4px;
+    background-color: var(--secondary-background);
+    color: var(--primary-text);
+    transition: border-color 0.3s ease;
+    resize: vertical; /* Allow vertical resizing */
 }
 
 .upload-form input[type="file"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
-}
-
-.upload-form button[type="submit"] {
-    background-image: linear-gradient(to right, var(--button-gradient-light-start), var(--button-gradient-light-end));
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
     cursor: pointer;
 }
 
-.upload-form button[type="submit"]:hover {
-    filter: brightness(1.1);
+.upload-form input[type="text"]:focus,
+.upload-form textarea:focus,
+.upload-form input[type="file"]:focus {
+    border-color: var(--button-gradient-start);
+    outline: none;
+}
+
+.upload-form button {
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    background: linear-gradient(to right, var(--button-gradient-start), var(--button-gradient-end));
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.upload-form button:hover {
+    background: linear-gradient(to right, var(--button-gradient-end), var(--button-gradient-start));
 }

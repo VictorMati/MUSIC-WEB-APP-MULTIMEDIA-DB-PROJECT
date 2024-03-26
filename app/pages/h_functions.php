@@ -23,7 +23,7 @@ function renderVideoCard($video) {
     echo '<div class="card-info">';
     echo '<h3>' . $video['artist_name'] ." - ". $video['title'] . '</h3>';
     // echo '<p>' . $video['artist_name'] . '</p>';
-    echo '<p>' . $video['duration'] . '</p>';
+    // echo '<p>' . $video['duration'] . '</p>';
     echo '<p>' . $video['resolution'] . '</p>';
     echo '</div>';
     echo '</div>';
@@ -46,7 +46,7 @@ function fetchSongs($conn) {
     $db = new Database();
     $conn = $db->connect();
 
-    $sql = "SELECT s.song_id, s.title, s.duration, s.genre, s.cover_image, s.audio_file, s.release_year, a.artist_name FROM songs s
+    $sql = "SELECT s.song_id, s.title, s.genre, s.cover_image, s.audio_file, s.release_year, a.artist_name FROM songs s
             INNER JOIN artists a ON s.artist_id = a.artist_id";
     $result = $conn->query($sql);
 
@@ -107,7 +107,7 @@ function fetchVideos($conn) {
     $db = new Database();
     $conn = $db->connect();
 
-    $sql = "SELECT v.video_id, v.title, v.duration, v.resolution, v.thumbnail_url, v.video_file, a.artist_name FROM videos v
+    $sql = "SELECT v.video_id, v.title, v.resolution, v.thumbnail_url, v.video_file, a.artist_name FROM videos v
             INNER JOIN artists a ON v.artist_id = a.artist_id";
     $result = $conn->query($sql);
 
@@ -260,19 +260,31 @@ function searchSongs($conn, $searchQuery)
 }
 
 
-function insertAudioSong($conn, $title, $artist, $genre, $release_year, $cover_image_path, $audio_file_path) {
+function insertAudioSong($conn, $title, $artist_id, $genre, $cover_image_path, $audio_file_path, $release_year) {
     // Prepare SQL statement to insert data into the database
-    $sql = "INSERT INTO songs (artist, genre, cover_image, audio_file, title, release_year) VALUES (?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO songs (artist_id, genre, cover_image, audio_file, title, release_year) VALUES (?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
 
     // Bind parameters to the prepared statement
-    $stmt->bind_param("sssssi", $artist, $genre, $cover_image_path, $audio_file_path, $title, $release_year);
+    $stmt->bind_param("issssi", $artist_id, $genre, $cover_image_path, $audio_file_path, $title, $release_year);
 
     // Execute the prepared statement
     if ($stmt->execute()) {
         return true; // Return true if insertion is successful
     } else {
         return false; // Return false if insertion fails
+    }
+}
+
+// Function to insert artist details into the database
+function insertArtist($conn, $name, $description, $country, $profile_image_path) {
+    $sql = "INSERT INTO artists (artist_name, description, country, profile_image) VALUES (?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ssss", $name, $description, $country, $profile_image_path);
+    if ($stmt->execute()) {
+        return $conn->insert_id; // Return the ID of the inserted artist
+    } else {
+        return false;
     }
 }
 
