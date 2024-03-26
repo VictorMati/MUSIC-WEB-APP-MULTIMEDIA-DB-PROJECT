@@ -1,0 +1,59 @@
+:root {
+    /* Light Mode Colors */
+    --primary-background-light: #fff;
+    --secondary-background-light: #fbfbfb;
+    --tertiary-background-light: #efefef;
+    --primary-text-light: #222;
+    --secondary-text-light: #333;
+    --button-gradient-light-start: #e2005e;
+    --button-gradient-light-end: #0065e1;
+}
+
+/* Upload Form Styles */
+.upload-container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.upload-form {
+    background-color: var(--secondary-background-light);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.upload-form h2 {
+    color: var(--primary-text-light);
+    margin-bottom: 20px;
+}
+
+.upload-form input[type="text"],
+.upload-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.upload-form input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.upload-form button[type="submit"] {
+    background-image: linear-gradient(to right, var(--button-gradient-light-start), var(--button-gradient-light-end));
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.upload-form button[type="submit"]:hover {
+    filter: brightness(1.1);
+}

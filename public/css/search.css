@@ -10,7 +10,7 @@
     --button-gradient-light-end: #0065e1;
 }
 
-
+/* 
 .container {
     max-width: 800px;
     margin: 0 auto;
@@ -51,6 +51,40 @@ button[type="submit"]:hover {
 
 .search-results h3 {
     color: var(--primary-text-light);
+} */
+
+
+/* search.css */
+
+.search-results {
+    margin-top: 20px;
+    background-color: #444;
+    position: absolute;
+    width: 370px;
+    top: 15px;
+    right: center;
 }
 
+.search-result {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
 
+.search-result img {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.search-result h3 {
+    margin-right: 10px;
+}
+
+.result-info {
+    flex: 1;
+}
+
+/* Add more styles as needed */

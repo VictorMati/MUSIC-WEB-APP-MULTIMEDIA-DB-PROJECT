@@ -14,10 +14,7 @@
 /* Sidebar Styles */
 .sidebar {
     width: 280px;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
+    position: relative;
     overflow-y: auto;
     transition: width 0.3s ease-in-out;
     margin: 0;
@@ -66,6 +63,10 @@
 }
 
 .sidebar-navigation a:hover {
+    color: var(--button-gradient-light-end);
+}
+
+.sidebar-navigation a.active {
     color: var(--button-gradient-light-end);
 }
 

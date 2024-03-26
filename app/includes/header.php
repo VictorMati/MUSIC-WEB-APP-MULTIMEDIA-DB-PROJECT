@@ -1,21 +1,21 @@
 <!-- header.php -->
 <?php
-require_once("C:\Users\hp\Documents\DataBase\MULTIMEDIA-DB-PROJECT\app\pages\h_functions.php");
-require_once("C:\Users\hp\Documents\DataBase\MULTIMEDIA-DB-PROJECT\app\pages\database.php");
+// require_once("C:\Users\hp\Documents\DataBase\MULTIMEDIA-DB-PROJECT\app\pages\h_functions.php");
+// require_once("C:\Users\hp\Documents\DataBase\MULTIMEDIA-DB-PROJECT\app\pages\database.php");
 
-$db = new Database();
-$conn = $db->connect();
+// $db = new Database();
+// $conn = $db->connect();
 
-// Check if the search form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["search_term"])) {
-    $searchTerm = test_input($_POST["search_term"]);
-    $searchResults = searchSongs($conn, $searchTerm);
-} else {
-    // Default search results
-    $searchResults = [];
-}
+// // Check if the search form is submitted
+// if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["q"])) {
+//     $searchTerm = test_input($_POST["q"]);
+//     $searchResults = searchSongs($conn, $searchTerm);
+// } else {
+//     // Default search results
+//     $searchResults = [];
+// }
 
-?>
+// ?>
 
 <header>
     <div class="logo-container">
@@ -29,11 +29,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["search_term"])) {
 
 
     <div class="search-bar">
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
-            <input type="text" id="search-input" name="search_term" placeholder="Search for songs" autocomplete="off">
+        <form action="?page=search" method="POST">
+            <input type="text" id="search-input" name="q" placeholder="Search for songs" autocomplete="off">
             <button type="submit"><i class="fas fa-search"></i></button>
         </form>
-        <div class="search-suggestions" id="search-suggestions-container"></div> 
+        <div class="search-results" id="search-results-container"></div> 
     </div>
 
 

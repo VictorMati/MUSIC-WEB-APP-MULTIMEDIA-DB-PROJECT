@@ -2,7 +2,7 @@
 require_once 'h_functions.php';
 require_once 'database.php';
 
-session_start();
+// session_start();
 
 $db = new Database();
 $conn = $db->connect();

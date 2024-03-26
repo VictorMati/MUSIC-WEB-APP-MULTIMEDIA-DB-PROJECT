@@ -220,21 +220,60 @@ function fetchArtistVideos($conn, $artist_id) {
 }
 
 
-function searchSongs($conn, $searchTerm) {
-    // Prepare SQL statement to search for songs
-    $sql = "SELECT * FROM songs WHERE title LIKE ? OR artist_name LIKE ? OR release_year = ? OR genre LIKE ?";
-    $stmt = $conn->prepare($sql);
-    $searchTerm = "%$searchTerm%"; // Add wildcards for partial matching
-    $stmt->bind_param("ssis", $searchTerm, $searchTerm, $searchTerm, $searchTerm);
-    $stmt->execute();
-    $result = $stmt->get_result();
+// function searchSongs($conn, $searchTerm) {
+//     // Prepare SQL statement to search for songs
+//     $sql = "SELECT * FROM songs WHERE title LIKE ? OR artist_name LIKE ? OR release_year = ? OR genre LIKE ?";
+//     $stmt = $conn->prepare($sql);
+//     $searchTerm = "%$searchTerm%"; // Add wildcards for partial matching
+//     $stmt->bind_param("ssis", $searchTerm, $searchTerm, $searchTerm, $searchTerm);
+//     $stmt->execute();
+//     $result = $stmt->get_result();
 
-    $searchResults = [];
-    while ($row = $result->fetch_assoc()) {
-        $searchResults[] = $row;
+//     $searchResults = [];
+//     while ($row = $result->fetch_assoc()) {
+//         $searchResults[] = $row;
+//     }
+
+//     return $searchResults;
+// }
+
+function searchSongs($conn, $searchQuery)
+{
+    // Escape the search query to prevent SQL injection
+    $escapedSearchQuery = $conn->real_escape_string($searchQuery);
+
+    // Query to search for songs by title, artist, genre, or year
+    $query = "SELECT * FROM songs
+              WHERE title LIKE '%$escapedSearchQuery%'
+                 OR artist_name LIKE '%$escapedSearchQuery%'
+                 OR genre LIKE '%$escapedSearchQuery%'
+                 OR release_year LIKE '%$escapedSearchQuery%'";
+
+    $result = $conn->query($query);
+
+    if ($result) {
+        return $result->fetch_all(MYSQLI_ASSOC);
+    } else {
+        // Handle the query error (you may want to log it or display an error message)
+        return [];
     }
+}
 
-    return $searchResults;
+
+function insertAudioSong($conn, $title, $artist, $genre, $release_year, $cover_image_path, $audio_file_path) {
+    // Prepare SQL statement to insert data into the database
+    $sql = "INSERT INTO songs (artist, genre, cover_image, audio_file, title, release_year) VALUES (?, ?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+
+    // Bind parameters to the prepared statement
+    $stmt->bind_param("sssssi", $artist, $genre, $cover_image_path, $audio_file_path, $title, $release_year);
+
+    // Execute the prepared statement
+    if ($stmt->execute()) {
+        return true; // Return true if insertion is successful
+    } else {
+        return false; // Return false if insertion fails
+    }
 }
 
 

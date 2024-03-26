@@ -1,4 +1,6 @@
-
+<?php 
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,6 +11,7 @@
     <link rel="stylesheet" href="/public/css/index.css">
     <link rel="stylesheet" href="/public/css/header.css">
     <link rel="stylesheet" href="/public/css/sidebar.css">
+    <link rel="stylesheet" href="/public/css/search.css">
 
     <link rel="icon" href="/public/assets/images/default_images/Letter H.jpg" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -29,7 +32,7 @@
             // Include the main content based on the requested page
             $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 
-            $allowedPages = ['home', 'login', 'register', 'audio_view', 'video_view', 'artists_view', 'search_view', 'single_artist_view', 'audio_player', 'video_player'];
+            $allowedPages = ['home', 'login', 'register', 'audio_view', 'video_view', 'artists_view', 'search', 'single_artist_view', 'audio_player', 'video_player', 'upload_audio'];
 
             if (in_array($page, $allowedPages)) {
                 include("../app/pages/" . $page . ".php");

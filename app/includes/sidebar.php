@@ -9,10 +9,11 @@
         <nav class="sidebar-navigation">
             <ul>
                 <li><a href="?page=home"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="?page=search_view"><i class="fas fa-search"></i> Search</a></li>
+                <li><a href="?page=search"><i class="fas fa-search"></i> Search</a></li>
                 <li><a href="?page=artists_view"><i class="fas fa-users"></i> Artists</a></li>
                 <li><a href="?page=audio_view"><i class="fas fa-music"></i> Audio</a></li>
                 <li><a href="?page=video_view"><i class="fas fa-video"></i> Video</a></li>
+                <li><a href="?page=upload_audio"><i class="fas fa-upload"></i> Upload Audio</a></li>
                 <!-- Add more navigation links as needed -->
             </ul>
         </nav>

@@ -2,13 +2,13 @@
 require_once 'h_functions.php';
 require_once 'database.php';
 
-session_start();
+// session_start();
 
-// Check if the user is not logged in, then redirect to the login page
-// if (!isset($_SESSION['user_id'])) {
-//     header("Location: ?page=login");
-//     exit();
-// }
+// // Check if the user is not logged in, then redirect to the login page
+// // if (!isset($_SESSION['user_id'])) {
+// //     header("Location: ?page=login");
+// //     exit();
+// // }
 
 $db = new Database();
 $conn = $db->connect();

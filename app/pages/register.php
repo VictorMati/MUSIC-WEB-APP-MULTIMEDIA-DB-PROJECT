@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <section class="registration">
     <h2>Sign Up</h2>
-    <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+    <form method="POST" action="?page=register">
         <label for="name">Name:</label>
         <input type="text" name="name" id="name">
         <span class="error"><?php echo $nameErr; ?></span>

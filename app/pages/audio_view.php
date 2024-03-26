@@ -25,7 +25,7 @@ $audioSongs = fetchSongs($conn);
         <h2>Audio Songs</h2>
         <div class="audio-list">
             <?php foreach ($audioSongs as $song): ?>
-                <a href="/app/pages/audio_player.php/<?php echo $song['song_id']; ?>"class="audio-item-link">
+                <a href="?page=audio_player"class="audio-item-link">
                 <div class="card">
                     <?php renderSongCard($song); ?>
                 </div>    

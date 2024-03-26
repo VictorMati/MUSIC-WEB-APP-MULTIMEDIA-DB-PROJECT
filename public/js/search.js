@@ -1,39 +1,41 @@
-// JavaScript code
-document.addEventListener("DOMContentLoaded", function() {
+// search.js
+
+document.addEventListener('DOMContentLoaded', function () {
     const searchInput = document.getElementById('search-input');
-    const suggestionsContainer = document.getElementById('search-suggestions-container');
+    const searchResultsContainer = document.getElementById('search-results-container');
 
-    searchInput.addEventListener('input', function() {
-        const searchTerm = searchInput.value.trim();
-        if (searchTerm === '') {
-            suggestionsContainer.innerHTML = ''; // Clear suggestions if input is empty
+    searchInput.addEventListener('input', function () {
+        const searchTerm = this.value.trim();
+
+        // Check if the search term is not empty
+        if (searchTerm.length > 0) {
+            // Perform AJAX request to fetch auto-completion results
+            const xhr = new XMLHttpRequest();
+            const url = '/pages/search.php'; // Replace with the actual path to your search handler script
+            const params = 'q=' + encodeURIComponent(searchTerm);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    // Update the content of searchResultsContainer with the received results
+                    searchResultsContainer.innerHTML = xhr.responseText;
+                }
+            };
+
+            xhr.open('GET', url + '?' + params, true);
+            xhr.send();
         } else {
-            fetchSuggestions(searchTerm);
+            // Clear the search results if the search term is empty
+            searchResultsContainer.innerHTML = '';
         }
+        // Add click event listener to handle selection from search results
+        searchResultsContainer.addEventListener('click', function (event) {
+            const selectedResult = event.target.textContent.trim();
+            
+            // Autocomplete the search bar with the selected result
+            searchInput.value = selectedResult;
+            
+            // Clear the search results container
+            searchResultsContainer.innerHTML = '';
+        });
     });
-
-    function fetchSuggestions(searchTerm) {
-        const url = `search.php?q=${searchTerm}`; // Adjust the URL to your server-side script
-        fetch(url)
-            .then(response => response.json())
-            .then(data => {
-                displaySuggestions(data.suggestions);
-            })
-            .catch(error => console.error('Error fetching suggestions:', error));
-    }
-
-    function displaySuggestions(suggestions) {
-        if (suggestions.length === 0) {
-            suggestionsContainer.innerHTML = '<p>No suggestions found.</p>';
-        } else {
-            suggestionsContainer.innerHTML = ''; // Clear previous suggestions
-            const ul = document.createElement('ul');
-            suggestions.forEach(suggestion => {
-                const li = document.createElement('li');
-                li.textContent = suggestion;
-                ul.appendChild(li);
-            });
-            suggestionsContainer.appendChild(ul);
-        }
-    }
-});
+});    

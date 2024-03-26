@@ -37,26 +37,30 @@ main {
 }
 
 .main-container {
+    position: relative;
+    top: 0;
+    left: 290px;
     width: 80%;
 }
 
 .sidebar-container {
     width: 20%;
+    height: 100vh;
     background-color: var(--primary-background-light);
     color: var(--secondary-text-light);
-    position: relative;
+    position: fixed;
     top: 0;
-    left: -280px; /* Hide sidebar initially */
+    left: 0; /* Hide sidebar initially */
     transition: left 0.3s ease;
 }
 
-.sidebar.active {
-    left: 0; 
+.sidebar-container.active {
+    left: -280px; 
 }
 
-.sidebar.active .main-container {
+/* .sidebar-container.active.main-container {
     width: 100%;
-}
+} */
 
 
 

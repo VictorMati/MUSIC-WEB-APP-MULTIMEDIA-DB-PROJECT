@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 require_once 'h_functions.php';
 require_once 'database.php';
@@ -28,7 +27,7 @@ $artistsData = fetchArtists($conn);
         <section class="song-section">
             <?php foreach ($songsData as $song): ?>
                <!-- TODO: fix link problem -->
-                <a href="?page=audio_player ?id=<?php echo $song['song_id']; ?>"class="audio-item-link">
+                <a href="?page=audio_player"class="audio-item-link">
                 <div class="card">
                     <?php renderSongCard($song); ?>
                 </div>
@@ -40,7 +39,7 @@ $artistsData = fetchArtists($conn);
         <h2>Videos</h2>
         <section class="video-section">
             <?php foreach ($videosData as $video): ?>
-                <a href="/app/pages/audio_player.php/<?php echo $video['video_id']; ?>" class="video-item-link">
+                <a href="/app/pages/audio_player.php?video_id=<?php echo $video['video_id']; ?>" class="video-item-link">
                 <div class="card">
                     <?php renderVideoCard($video); ?>
                 </div>    
