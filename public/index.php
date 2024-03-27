@@ -32,7 +32,7 @@ session_start();
             // Include the main content based on the requested page
             $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 
-            $allowedPages = ['home', 'login', 'register', 'audio_view', 'video_view', 'artists_view', 'search', 'single_artist_view', 'audio_player', 'video_player', 'upload_audio'];
+            $allowedPages = ['home', 'login', 'register', 'audio_view', 'video_view', 'artists_view', 'search', 'single_artist_view', 'audio_player', 'video_player', 'upload_audio', 'upload_video'];
 
             if (in_array($page, $allowedPages)) {
                 include("../app/pages/" . $page . ".php");

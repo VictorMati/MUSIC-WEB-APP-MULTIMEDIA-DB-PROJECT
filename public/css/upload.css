@@ -40,7 +40,7 @@ body {
 .upload-form input[type="file"],
 .upload-form button {
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
     padding: 10px;
     border: 1px solid var(--tertiary-background);
     border-radius: 4px;
@@ -51,7 +51,7 @@ body {
 
 .upload-form textarea {
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
     padding: 10px;
     border: 1px solid var(--tertiary-background);
     border-radius: 4px;

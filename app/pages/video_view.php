@@ -23,7 +23,7 @@ $videos = fetchVideos($conn);
         <h2>Video Songs</h2>
         <div class="video-list">
             <?php foreach ($videos as $video): ?>
-                <a href="/app/pages/audio_player.php/<?php echo $video['video_id']; ?>" class="video-item-link">
+                <a href="?page=video_player&video_id=<?php echo $video['video_id']; ?>" class="video-item-link">
                 <div class="card">
                     <?php renderVideoCard($video); ?>
                 </div>    

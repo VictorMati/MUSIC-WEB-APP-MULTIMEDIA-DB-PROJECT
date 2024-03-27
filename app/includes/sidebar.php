@@ -14,7 +14,7 @@
                 <li><a href="?page=audio_view"><i class="fas fa-music"></i> Audio</a></li>
                 <li><a href="?page=video_view"><i class="fas fa-video"></i> Video</a></li>
                 <li><a href="?page=upload_audio"><i class="fas fa-upload"></i> Upload Audio</a></li>
-                <!-- Add more navigation links as needed -->
+                <li><a href="?page=upload_video"><i class="fas fa-upload"></i> Upload Video</a></li>
             </ul>
         </nav>
         <?php if (isset($_SESSION['user_id'])) : ?>

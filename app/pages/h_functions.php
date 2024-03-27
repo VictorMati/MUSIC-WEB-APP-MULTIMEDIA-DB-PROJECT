@@ -1,6 +1,7 @@
 <?php 
 
-require_once 'database.php'; // Include the database file
+require_once 'database.php'; 
+
 
 
 function renderSongCard($song) {
@@ -191,6 +192,15 @@ function fetchArtistDetails($conn, $artist_id) {
     }
 }
 
+function fetchArtistById($conn, $artist_id) {
+    $sql = "SELECT * FROM artists WHERE artist_id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $artist_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->fetch_assoc();
+}
+
 function fetchArtistAudio($conn, $artist_id) {
     $sql = "SELECT * FROM songs WHERE artist_id = ?";
     $stmt = $conn->prepare($sql);
@@ -275,6 +285,14 @@ function insertAudioSong($conn, $title, $artist_id, $genre, $cover_image_path, $
         return false; // Return false if insertion fails
     }
 }
+
+function insertVideo($conn, $title, $artist_id, $resolution, $thumbnail_url, $video_file) {
+    $sql = "INSERT INTO videos (title, artist_id, resolution, thumbnail_url, video_file) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sisssss", $title, $artist_id, $resolution, $thumbnail_url, $video_file);
+    return $stmt->execute();
+}
+
 
 // Function to insert artist details into the database
 function insertArtist($conn, $name, $description, $country, $profile_image_path) {

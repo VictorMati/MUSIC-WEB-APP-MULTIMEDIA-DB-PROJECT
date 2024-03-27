@@ -2,7 +2,6 @@
 require_once 'h_functions.php';
 require_once 'database.php';
 
-// session_start();
 
 $db = new Database();
 $conn = $db->connect();
@@ -13,10 +12,15 @@ $selected_song = null; // Initialize $selected_song to null
 if (isset($_GET['song_id'])) {
     $song_id = $_GET['song_id'];
     $selected_song = fetchSongById($conn, $song_id);
+
+    // Fetch artist details separately
+    // $artist_id = $_GET['artist_id'];
+    // $artistsData = fetchArtistById($conn, $artist_id);
+    $artist_name = fetchArtistDetails($conn, $selected_song['artist_id']);
 } else {
-    // Handle the case when no song is selected
-    // Redirect or display an error message
+    echo 'Error fetching song';
 }
+
 
 // Check if $selected_song is set before accessing its properties
 if ($selected_song) {
@@ -49,8 +53,7 @@ if ($selected_song) {
                 </audio>
                 <div class="song-details">
                     <h3><?php echo $selected_song['title']; ?></h3>
-                    <p>Artist: <?php echo $selected_song['artist_name']; ?></p>
-                    <p>Duration: <?php echo $selected_song['duration']; ?></p>
+                    <p>Artist: <?php echo $artist_name['artist_name']; ?></p>
                 </div>
             <?php else: ?>
                 <p>No song selected.</p>
@@ -59,10 +62,14 @@ if ($selected_song) {
 
         <!-- More Songs by the Same Artist -->
         <?php if ($selected_song): ?>
-            <h2>More Songs by <?php echo $selected_song['artist_name']; ?></h2>
+            <h2>More Songs by <?php echo $artist_name['artist_name']; ?></h2>
             <div class="artist-songs">
                 <?php foreach ($artist_songs as $song): ?>
-                    <?php renderSongCard($song); ?>
+                    <a href="?page=audio_player&song_id=<?php echo $song['song_id']; ?>"class="audio-item-link">
+                    <div class="card">
+                        <?php renderSongCard($song); ?>
+                    </div>
+                </a>
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
@@ -72,7 +79,11 @@ if ($selected_song) {
             <h2>Songs of <?php echo $selected_song['genre']; ?> Genre</h2>
             <div class="genre-songs">
                 <?php foreach ($genre_songs as $song): ?>
+                    <a href="?page=audio_player&song_id=<?php echo $song['song_id']; ?>"class="audio-item-link">
+                <div class="card">
                     <?php renderSongCard($song); ?>
+                </div>
+                </a>
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>

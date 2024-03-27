@@ -99,18 +99,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <textarea name="artist_description" placeholder="Artist Description" required></textarea>
             <select name="artist_country" required>
                 <option value="" disabled selected>Choose Artist Country</option>
-                <option value="United States">United States</option>
+                <option value="United States">Kenya</option>
+                <option value="United States">Tanzania</option>
+                <option value="United Kingdom">United States</option>
+                <option value="United States">Nigeria</option>
                 <option value="United Kingdom">United Kingdom</option>
-                <!-- Add more countries as needed -->
+                <option value="United States">Ghana</option>
+                <option value="United States">South Africa</option>
             </select>
             <input type="file" name="artist_profile_image" required>
             <input type="text" name="title" placeholder="Title" required>
+
             <select name="genre" required>
                 <option value="" disabled selected>Choose Genre</option>
-                <option value="Rock">Rock</option>
+                <option value="Rock">Country</option>
                 <option value="Pop">Pop</option>
                 <option value="Hip Hop">Hip Hop</option>
-                <!-- Add more genres as needed -->
+                <option value="Bongo">Bongo</option>
+                <option value="Deep House">Deep house</option>
+                <option value="Trap">Trap</option>
+                <option value="Rap">Rap</option>
+                <option value="R&B">R&B</option>      
             </select>
             <input type="text" name="release_year" placeholder="Release Year" required>
             <input type="file" name="cover_image" required placeholder="Cover Image">

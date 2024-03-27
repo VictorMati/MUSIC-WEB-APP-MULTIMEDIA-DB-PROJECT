@@ -26,8 +26,7 @@ $artistsData = fetchArtists($conn);
         <h2>Songs</h2>
         <section class="song-section">
             <?php foreach ($songsData as $song): ?>
-               <!-- TODO: fix link problem -->
-                <a href="?page=audio_player"class="audio-item-link">
+                <a href="?page=audio_player&song_id=<?php echo $song['song_id']; ?>"class="audio-item-link">
                 <div class="card">
                     <?php renderSongCard($song); ?>
                 </div>
@@ -39,7 +38,7 @@ $artistsData = fetchArtists($conn);
         <h2>Videos</h2>
         <section class="video-section">
             <?php foreach ($videosData as $video): ?>
-                <a href="/app/pages/audio_player.php?video_id=<?php echo $video['video_id']; ?>" class="video-item-link">
+                <a href="?page=video_player&video_id=<?php echo $video['video_id']; ?>" class="video-item-link">
                 <div class="card">
                     <?php renderVideoCard($video); ?>
                 </div>    
@@ -51,7 +50,7 @@ $artistsData = fetchArtists($conn);
         <h2>Artists</h2>
         <section class="artist-section">
             <?php foreach ($artistsData as $artist): ?>
-                <a href="/app/pages/single_artist_view.php/<?php echo $artist['artist_id']; ?>">
+                <a href="?page=single_artist_view&artist_id=<?php echo $artist['artist_id']; ?>">
                     <div class="card">
                         <?php renderArtistCard($artist); ?>
                     </div>
